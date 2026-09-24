@@ -64,7 +64,7 @@ def array_sum(a: list[int]) -> int:
     total = 0
     for x in a:
         total += x
-    print(total)
+    print("Сумма:",total)
     return total
 
 
@@ -74,14 +74,19 @@ def array_max(a: list[int]) -> int:
     for x in a[1:]:
         if x > m:
             m = x
-    print(m)
+    print("Максимум:",m)
     return m
 
 
 def count_equal_pairs(a: list[int]) -> int:
     """Число пар (i, j), i < j, таких что a[i] == a[j]. Ожидаемая сложность: TODO."""
-    # TODO: реализовать двойным циклом
-    raise NotImplementedError
+    count = 0
+    for i in range(len(a)):
+        for j in range(i + 1, len(a)):
+            if a[i] == a[j]:
+                count += 1
+    print("Пары:", count)
+    return count
 
 
 def binary_pow(x: int, n: int, mod: int | None = None) -> int:
