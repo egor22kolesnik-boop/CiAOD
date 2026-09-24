@@ -60,26 +60,23 @@ POW_CALLS = 20_000    # вызовов binary_pow на один замер: ин
 
 
 def array_sum(a: list[int]) -> int:
-    """Сумма элементов массива. Ожидаемая сложность: TODO (обосновать в отчёте)."""
     total = 0
     for x in a:
         total += x
-    print("Сумма:",total)
+    print("Сумма:", total)
     return total
 
 
 def array_max(a: list[int]) -> int:
-    """Максимум массива (массив непуст). Ожидаемая сложность: TODO."""
     m = a[0]
     for x in a[1:]:
         if x > m:
             m = x
-    print("Максимум:",m)
+    print("Максимум:", m)
     return m
 
 
 def count_equal_pairs(a: list[int]) -> int:
-    """Число пар (i, j), i < j, таких что a[i] == a[j]. Ожидаемая сложность: TODO."""
     count = 0
     for i in range(len(a)):
         for j in range(i + 1, len(a)):
@@ -90,13 +87,18 @@ def count_equal_pairs(a: list[int]) -> int:
 
 
 def binary_pow(x: int, n: int, mod: int | None = None) -> int:
-    """Бинарное возведение в степень, n >= 0. Ожидаемая сложность: TODO.
+    result = 1
+    while n > 0:
+        if n & 1:
+            result *= x
+            if mod is not None:
+                result %= mod
+        x *= x
+        if mod is not None:
+            x %= mod
+        n >>= 1
+    return result
 
-    При заданном mod все умножения выполняются по модулю (результат x**n % mod).
-    """
-    # TODO: реализовать через квадрирование; при mod применять % mod после
-    # каждого умножения
-    raise NotImplementedError
 
 
 # ---------------------------------------------------------------------------
